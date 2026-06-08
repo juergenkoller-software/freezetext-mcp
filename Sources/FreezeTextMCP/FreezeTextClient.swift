@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 /// HTTP client for the FreezeText app's local API server (default port 9876).
 /// Configured via environment variables FREEZETEXT_API_PORT and FREEZETEXT_API_TOKEN.
