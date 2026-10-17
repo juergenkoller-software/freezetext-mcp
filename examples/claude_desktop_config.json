@@ -1,11 +1,11 @@
 {
-  "_comment": "Example Claude Desktop config for FreezeText MCP. Copy the 'freezetext' entry into your ~/Library/Application Support/Claude/claude_desktop_config.json under 'mcpServers'.",
+  "_comment": "Example Claude Desktop config for FreezeText MCP. Copy the 'freezetext' entry into your ~/Library/Application Support/Claude/claude_desktop_config.json under 'mcpServers'. Turn on 'Enable API Server' in FreezeText → Settings → API and copy the API token from there.",
   "mcpServers": {
     "freezetext": {
       "command": "/usr/local/bin/FreezeTextMCP",
       "env": {
         "FREEZETEXT_API_PORT": "9876",
-        "FREEZETEXT_API_TOKEN": "<paste-from-freezetext-settings-if-set>"
+        "FREEZETEXT_API_TOKEN": "<paste-from-freezetext-settings-api>"
       }
     }
   }

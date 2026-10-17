@@ -6,7 +6,7 @@ struct FreezeTextMCPServer {
     static func main() async throws {
         let server = Server(
             name: "freezetext",
-            version: "0.1.0",
+            version: "0.2.0",
             capabilities: .init(tools: .init(listChanged: false))
         )
 
@@ -18,10 +18,11 @@ struct FreezeTextMCPServer {
 
         await server.withMethodHandler(CallTool.self) { params in
             do {
-                guard await client.isAppRunning() else {
-                    return CallTool.Result(content: [.text("FreezeText is not running. Please open the app and enable its HTTP API in Settings.")], isError: true)
-                }
                 return try await handleTool(params, client: client)
+            } catch let apiError as FreezeTextAPIError {
+                return CallTool.Result(content: [.text(apiError.message)], isError: true)
+            } catch where isUnreachable(error) {
+                return CallTool.Result(content: [.text(client.notReachableMessage)], isError: true)
             } catch {
                 return CallTool.Result(content: [.text("Error: \(error.localizedDescription)")], isError: true)
             }
