@@ -127,7 +127,7 @@ Every refusal comes back as an MCP error (`isError: true`) with a sentence the a
 | No token generated yet (HTTP 503) | Generate one in FreezeText → Settings → API |
 | Any other HTTP error | Status code and FreezeText's error text, e.g. a missing Accessibility permission |
 
-Before version 0.2.0 the bridge ignored the HTTP status, so a wrong token looked like a successful call. `search_history` also never reached the app, because its query string was encoded into the path.
+Before version 1.1.0 the bridge ignored the HTTP status, so a wrong token looked like a successful call. `search_history` also never reached the app, because its query string was encoded into the path.
 
 ---
 
